@@ -1,0 +1,58 @@
+#Batch CD-search tool	NIH/NLM/NCBI
+#cdsid	QM3-qcdsearch-43BDE250E4008DE-31576C19768C0C4F
+#datatype	hitsConcise Results(Superfamily only)
+#status	0
+#Start time	2024-11-08T06:33:59	Run time	0:00:00:15
+#status	Warning: Too many queries.	msg	Error(s) occurred during search, the result may be incomplete
+
+Query	Hit type	PSSM-ID	From	To	E-Value	Bitscore	Accession	Short name	Incomplete	Superfamily
+Q#1 - >gene01	superfamily	444663	6	69	3.08338e-36	120.062	cl00033	AP2 superfamily	 - 	 - 
+Q#2 - >gene02	superfamily	444663	6	69	1.12723e-34	116.596	cl00033	AP2 superfamily	 - 	 - 
+Q#3 - >gene03	superfamily	444663	6	69	4.08125e-37	122.759	cl00033	AP2 superfamily	 - 	 - 
+Q#4 - >gene04	superfamily	444663	6	69	1.46033e-36	121.603	cl00033	AP2 superfamily	 - 	 - 
+Q#5 - >gene05	superfamily	444663	6	69	1.46033e-36	121.603	cl00033	AP2 superfamily	 - 	 - 
+Q#6 - >gene06	superfamily	444663	41	98	3.99603e-31	113.135	cl00033	AP2 superfamily	 - 	 - 
+Q#7 - >gene07	superfamily	444663	29	88	7.99759e-31	107.351	cl00033	AP2 superfamily	 - 	 - 
+Q#8 - >gene08	superfamily	444663	44	101	2.89245e-31	113.135	cl00033	AP2 superfamily	 - 	 - 
+Q#9 - >gene09	superfamily	444663	44	101	3.2611e-31	113.135	cl00033	AP2 superfamily	 - 	 - 
+Q#10 - >gene10	superfamily	444663	29	88	8.85281e-31	107.736	cl00033	AP2 superfamily	 - 	 - 
+Q#11 - >gene11	superfamily	444663	47	103	1.97421e-31	113.899	cl00033	AP2 superfamily	 - 	 - 
+Q#12 - >gene12	superfamily	444663	7	69	6.25608e-34	113.514	cl00033	AP2 superfamily	 - 	 - 
+Q#13 - >gene13	superfamily	444663	7	70	5.58825e-23	86.5501	cl00033	AP2 superfamily	 - 	 - 
+Q#14 - >gene14	superfamily	444663	7	68	2.48292e-38	126.226	cl00033	AP2 superfamily	 - 	 - 
+Q#15 - >gene15	superfamily	444663	6	69	2.1937e-25	93.4836	cl00033	AP2 superfamily	 - 	 - 
+Q#16 - >gene16	superfamily	444663	20	82	4.86591e-18	73.0681	cl00033	AP2 superfamily	 - 	 - 
+Q#17 - >gene17	superfamily	444663	42	99	2.96735e-31	107.351	cl00033	AP2 superfamily	 - 	 - 
+Q#18 - >gene18	superfamily	444663	14	71	2.40099e-31	106.966	cl00033	AP2 superfamily	 - 	 - 
+Q#19 - >gene19	superfamily	444663	42	99	2.96735e-31	107.351	cl00033	AP2 superfamily	 - 	 - 
+Q#20 - >gene20	superfamily	444663	37	99	5.58465e-21	82.3129	cl00033	AP2 superfamily	 - 	 - 
+Q#21 - >gene21	superfamily	444663	30	87	4.40479e-21	82.6981	cl00033	AP2 superfamily	 - 	 - 
+Q#22 - >gene22	superfamily	444663	19	81	7.04298e-32	110.432	cl00033	AP2 superfamily	 - 	 - 
+Q#23 - >gene23	superfamily	444663	19	82	1.90581e-26	95.7948	cl00033	AP2 superfamily	 - 	 - 
+Q#24 - >gene24	superfamily	444663	19	82	5.83124e-28	99.2616	cl00033	AP2 superfamily	 - 	 - 
+Q#25 - >gene25	superfamily	444663	19	82	1.41453e-25	93.0984	cl00033	AP2 superfamily	 - 	 - 
+Q#26 - >gene26	superfamily	444663	19	82	5.83124e-28	99.2616	cl00033	AP2 superfamily	 - 	 - 
+Q#27 - >gene27	superfamily	444663	22	81	9.91974e-24	88.4761	cl00033	AP2 superfamily	 - 	 - 
+Q#28 - >gene28	superfamily	444663	137	197	2.61085e-21	86.9353	cl00033	AP2 superfamily	 - 	 - 
+Q#29 - >gene29	superfamily	444663	14	70	1.474e-22	85.3945	cl00033	AP2 superfamily	 - 	 - 
+Q#30 - >gene30	superfamily	444663	22	81	9.91974e-24	88.4761	cl00033	AP2 superfamily	 - 	 - 
+Q#31 - >gene31	superfamily	444663	40	96	2.74464e-30	105.81	cl00033	AP2 superfamily	 - 	 - 
+Q#32 - >gene32	superfamily	444663	83	141	1.9843e-27	100.039	cl00033	AP2 superfamily	 - 	 - 
+Q#33 - >gene33	superfamily	444663	41	101	4.88809e-27	100.039	cl00033	AP2 superfamily	 - 	 - 
+Q#34 - >gene34	superfamily	444663	68	126	1.86014e-27	100.039	cl00033	AP2 superfamily	 - 	 - 
+Q#35 - >gene35	superfamily	444663	75	133	1.60845e-24	93.105	cl00033	AP2 superfamily	 - 	 - 
+Q#36 - >gene36	superfamily	444663	85	143	1.45913e-31	110.432	cl00033	AP2 superfamily	 - 	 - 
+Q#37 - >gene37	superfamily	444663	31	89	3.22042e-31	108.892	cl00033	AP2 superfamily	 - 	 - 
+Q#38 - >gene38	superfamily	444663	88	145	5.5518e-34	117.366	cl00033	AP2 superfamily	 - 	 - 
+Q#39 - >gene39	superfamily	444663	90	148	8.05318e-31	109.277	cl00033	AP2 superfamily	 - 	 - 
+Q#40 - >gene40	superfamily	444663	68	125	2.87856e-16	70.3717	cl00033	AP2 superfamily	 - 	 - 
+Q#41 - >gene41	superfamily	444663	71	133	2.47412e-34	117.751	cl00033	AP2 superfamily	 - 	 - 
+Q#42 - >gene42	superfamily	444663	70	129	3.51316e-15	67.6753	cl00033	AP2 superfamily	 - 	 - 
+Q#43 - >gene43	superfamily	444663	63	121	1.01728e-33	115.825	cl00033	AP2 superfamily	 - 	 - 
+Q#44 - >gene44	superfamily	444663	65	123	8.10998e-35	118.907	cl00033	AP2 superfamily	 - 	 - 
+Q#45 - >gene45	superfamily	444663	57	116	1.33115e-35	120.448	cl00033	AP2 superfamily	 - 	 - 
+Q#46 - >gene46	superfamily	444663	62	120	1.30189e-32	113.129	cl00033	AP2 superfamily	 - 	 - 
+Q#47 - >gene47	superfamily	444663	57	117	2.67358e-31	109.277	cl00033	AP2 superfamily	 - 	 - 
+Q#48 - >gene48	superfamily	444663	57	115	1.11753e-19	79.2313	cl00033	AP2 superfamily	 - 	 - 
+Q#49 - >gene49	superfamily	444663	53	112	1.50773e-33	115.44	cl00033	AP2 superfamily	 - 	 - 
+Q#50 - >gene50	superfamily	444663	59	119	2.11277e-31	109.662	cl00033	AP2 superfamily	 - 	 - 
