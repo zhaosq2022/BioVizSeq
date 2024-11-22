@@ -37,7 +37,7 @@ smart_to_loc <- function(input_file, do_pfam = TRUE){
       seq_id <- names(seqs)[i]
       output_file <- file.path(output_directory, paste0(seq_id, "_SMART_results.txt"))
       
-      message("Submitting sequence", seq_id, "...\n")
+      message("Submitting sequence ", seq_id, "...\n")
       
       post_content <- list(
         SEQUENCE = as.character(seqs[[i]][1]),
