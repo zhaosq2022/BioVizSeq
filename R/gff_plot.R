@@ -119,7 +119,7 @@ gff_to_loc <- function(gff_data, mRNA_ID = NULL){
   table_loc[,2] <- gsub("exon", "UTR", table_loc[,2], ignore.case = TRUE)
   colnames(table_loc) <- c("ID", "element", "start", "end")
   
-  data_list <- list(mRNA_length = mRNA_length, table_loc = table_loc)
+  data_list <- list(gene_length = mRNA_length, table_loc = table_loc)
   return(data_list)
 }
 
@@ -156,8 +156,8 @@ gff_plot <- function(gff_file, the_order = NULL, shape = "Rect",
   
   gff_to_loc_data <- gff_to_loc(gff_data, mRNA_ID = mRNA_ID)
   
-  motif_plot(gff_to_loc_data$table_loc, gff_to_loc_data$mRNA_length, 
+  motif_plot(gff_to_loc_data$table_loc, gff_to_loc_data$gene_length, 
              the_order = mRNA_ID, shape = shape, r = r, 
              legend_size= legend_size, motif_color=element_color) +
-    labs(x="", y="")
+    labs(x="DNA length (5'-3')", y="Gene name")
 }

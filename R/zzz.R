@@ -1,4 +1,4 @@
-##' @importFrom utils install.packages
+
 .onAttach <- function(libname, pkgname) {
   
   required_packages <- c("ggplot2", "dplyr", "RColorBrewer", 

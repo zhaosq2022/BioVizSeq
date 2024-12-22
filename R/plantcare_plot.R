@@ -70,7 +70,7 @@ upload_fa_to_plantcare <- function(fasta_file, email) {
     }
     
     # Random wait time (between 10 and 60 seconds)
-    wait_time <- sample(10:60, 1)
+    wait_time <- sample(10:40, 1)
     message("Waiting for", wait_time, "seconds before uploading the next file...\n")
     Sys.sleep(wait_time)
   }
@@ -257,6 +257,6 @@ plantcare_plot <- function(plantcare_file, promoter_length = 2000,
   motif_plot(element_loc, length_data, the_order = the_order, 
              shape = shape, r=r, legend_size= legend_size, 
              motif_color=element_color) +
-    labs(x="", y="")
+    labs(x="Promoter Length", y="Gene")
 }
 

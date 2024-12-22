@@ -1,0 +1,6 @@
+url: ~
+template:
+  bootstrap: 5
+  theme: breeze-light
+news:
+  file: "NEWS.md"

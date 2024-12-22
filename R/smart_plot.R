@@ -89,6 +89,7 @@ smart_to_loc <- function(input_file, do_pfam = TRUE){
       
       Sys.sleep(5) # Be nice to other users
     }
+    #unlink(file_dir, recursive = TRUE)
   }
   
   smart_file_convert <- function(smart_txt){
