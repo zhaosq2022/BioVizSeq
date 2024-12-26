@@ -1,5 +1,5 @@
 ## Version 1.0.1 (2024-12-26)
- - `get_motif_location` to `meme_to_u_loc`.
+ - `get_motif_location` to `meme_to_loc`.
  - `motif_seq` to `meme_seq`.
 
 ## Version 1.0.0 (2024-12-22)
