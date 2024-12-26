@@ -10,6 +10,9 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/LICENSE-text.html</loc>
+  </url>
+  <url>
     <loc>/news/index.html</loc>
   </url>
   <url>
@@ -47,6 +50,12 @@
   </url>
   <url>
     <loc>/reference/meme_plot.html</loc>
+  </url>
+  <url>
+    <loc>/reference/meme_seq.html</loc>
+  </url>
+  <url>
+    <loc>/reference/meme_to_loc.html</loc>
   </url>
   <url>
     <loc>/reference/motif_plot.html</loc>

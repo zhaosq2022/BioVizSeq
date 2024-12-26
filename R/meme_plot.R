@@ -1,7 +1,7 @@
 
 #' Extract the location information of motif from mast or meme file
 #' 
-#' @title get_motif_location
+#' @title meme_to_loc
 #' @param motif_file The motif data of mast or meme file.
 #' @export
 #' @author Shiqi Zhao
@@ -9,17 +9,17 @@
 #' @examples
 #' meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq") 
 #' meme_file <- readLines(meme_path)
-#' motif_loc <- get_motif_location(meme_file)
+#' motif_loc <- meme_to_loc(meme_file)
 #' 
 #' mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq") 
 #' mast_file <- readLines(mast_path)
-#' motif_loc <- get_motif_location(mast_file)
+#' motif_loc <- meme_to_loc(mast_file)
 #' 
 #' @importFrom tidyr separate
 #' @importFrom stringr str_detect
 #' 
 
-get_motif_location <- function(motif_file){
+meme_to_loc <- function(motif_file){
   get_mast_location <- function(mast_file){
     
     process_mast <- function(mast_file){
@@ -226,7 +226,7 @@ meme_plot <- function(meme_file, the_order = NULL, motif_select = NULL,
                       shape = "RoundRect", show_motif_id = FALSE, r = 0.3, 
                       legend_size= 15, motif_color = NULL){
   raw_file <- readLines(meme_file)
-  meme_motif_loc <- get_motif_location(raw_file)
+  meme_motif_loc <- meme_to_loc(raw_file)
 
   if (is.null(the_order)) {
     the_order=NULL
@@ -256,7 +256,7 @@ meme_plot <- function(meme_file, the_order = NULL, motif_select = NULL,
 
 #' Get motif sequence from meme file or mast file
 #' 
-#' @title motif_seq
+#' @title meme_seq
 #' @param meme_file The path of meme file or mast file.
 #' @export
 #' @author Shiqi Zhao
@@ -264,13 +264,13 @@ meme_plot <- function(meme_file, the_order = NULL, motif_select = NULL,
 #' @examples
 #' meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
 #' meme_file <- readLines(meme_path)
-#' motifseq<- motif_seq(meme_file)
+#' motifseq<- meme_seq(meme_file)
 #' 
 #' mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 #' mast_file <- readLines(mast_path)
-#' motifseq<- motif_seq(mast_file)
+#' motifseq<- meme_seq(mast_file)
 #' 
-motif_seq <- function(meme_file){
+meme_seq <- function(meme_file){
   raw_file <- meme_file
   if(grepl("mast", raw_file[2])){
     data <- gsub('"', "", raw_file)

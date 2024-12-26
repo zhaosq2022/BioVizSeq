@@ -1,3 +1,4 @@
+
 # BioVizSeq
 
 ## 1. Introduction
@@ -103,7 +104,7 @@ meme.xml or mast.xml
 ``` r
 meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq") 
 meme_file <- readLines(meme_path)
-motif_loc <- get_motif_location(meme_file)
+motif_loc <- meme_to_loc(meme_file)
 
 motif_plot(motif_loc$table_loc, motif_loc$gene_length)
 ```

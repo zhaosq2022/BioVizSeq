@@ -32,7 +32,7 @@
     
     <a class="navbar-brand me-2" href="index.html">BioVizSeq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,7 +159,7 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meme_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"meme.xml"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span> </span>
 <span><span class="va">meme_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">meme_path</span><span class="op">)</span></span>
-<span><span class="va">motif_loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_motif_location.html">get_motif_location</a></span><span class="op">(</span><span class="va">meme_file</span><span class="op">)</span></span>
+<span><span class="va">motif_loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/meme_to_loc.html">meme_to_loc</a></span><span class="op">(</span><span class="va">meme_file</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/motif_plot.html">motif_plot</a></span><span class="op">(</span><span class="va">motif_loc</span><span class="op">$</span><span class="va">table_loc</span>, <span class="va">motif_loc</span><span class="op">$</span><span class="va">gene_length</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-meme_step-1.png" width="60%" height="60%"></p>
