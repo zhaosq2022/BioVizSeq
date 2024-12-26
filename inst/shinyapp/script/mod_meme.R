@@ -40,7 +40,7 @@ mod_meme_server <- function(input, output, session){
   
   motif_loc <- eventReactive(input$file_submit,{
     df <- filedata()
-    get_motif_location(df)
+    meme_to_loc(df)
   })
   
   output$loci_result <- renderDT({
