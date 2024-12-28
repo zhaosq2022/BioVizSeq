@@ -19,6 +19,7 @@ library(treeio)
 library(rmarkdown)
 
 source("script/homepage.R")
+source("script/aboutpage.R")
 
 source("script/mod_meme.R")
 source("script/mod_pfam.R")
