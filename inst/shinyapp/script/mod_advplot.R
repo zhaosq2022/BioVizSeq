@@ -11,8 +11,10 @@ mod_advplot_ui <- function(id){
       fileInput(ns("filecdd"),"Choose CDD File to Upload(.txt):", accept = NULL),
       fileInput(ns("filepep"),"Choose Protein File to Upload(.fa/.fasta):", accept = NULL),
       
-      fileInput(ns("fileplantcare"),"Choose plantcare File to Upload(.tab):", accept = NULL),
+      fileInput(ns("fileplantcare"),"Choose Plantcare File to Upload(.tab):", accept = NULL),
       numericInput(ns("prolength"),label = "Promoter Length",value = 2000),
+      
+      fileInput(ns("filename"),"Choose Renamed File to Upload(.csv/.txt/.xlsx/.xls):", accept = NULL),
       
       selectInput(ns("shapemotif"), label = "Element shape:",
                   c("RoundRect", "Rect")),
@@ -43,13 +45,30 @@ mod_advplot_ui <- function(id){
 mod_advplot_server <- function(input, output, session){
   ns <- session$ns
 
+  filedata <- eventReactive(input$file_submit,{
+    infile <- input$filename
+    if (is.null(infile)){
+      return(NULL)
+    }else{
+      if (grepl(".xls$|.xlsx$", infile$datapath, ignore.case = TRUE)) {
+        read.xlsx(infile$datapath,1, header=T)
+      } else if (grepl(".csv$", infile$datapath, ignore.case = TRUE)) {
+        read.csv(infile$datapath,sep=',', header=T)
+      } else if(grepl(".txt$", infile$datapath, ignore.case = TRUE)){
+        read.table(infile$datapath,sep = "\t", header = T,)
+      }
+    }
+  })
   
   element_plot <- eventReactive(input$file_submit,{
+
     plot_file <- combi_p(tree_path=input$filetree$datapath, gff_path = input$filegff$datapath,
                          meme_path = input$filememe$datapath, pfam_path = input$filepfam$datapath,
                          cdd_path = input$filecdd$datapath, fa_path = input$filefa$datapath,
                          plantcare_path = input$fileplantcare$datapath,
-                         promoter_length = input$prolength, shape = input$shapemotif,
+                         promoter_length = input$prolength,
+                         renamefile = filedata(),
+                         shape = input$shapemotif,
                          r = input$roundr, legend_size= input$legendsize
     )
     
