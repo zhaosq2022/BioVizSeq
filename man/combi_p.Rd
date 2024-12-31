@@ -13,6 +13,7 @@ combi_p(
   fa_path = NULL,
   plantcare_path = NULL,
   promoter_length = NULL,
+  renamefile = NULL,
   shape = "RoundRect",
   r = 0.3,
   legend_size = 6
@@ -34,6 +35,8 @@ combi_p(
 \item{plantcare_path}{The path of plantcare file (.tab).}
 
 \item{promoter_length}{The length of promoter.}
+
+\item{renamefile}{Rename file. Two cils: new_name and old_name.}
 
 \item{shape}{RoundRect or Rect.}
 
