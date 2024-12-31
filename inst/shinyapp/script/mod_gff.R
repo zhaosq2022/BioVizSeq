@@ -5,7 +5,7 @@ mod_gff_ui <- function(id){
       width = 4,
       h3(strong("The main options:")),
       fileInput(ns("filename"),"Choose Annotation File to Upload(.gff/.gtf):", accept = NULL),
-      
+      fileInput(ns("filename2"),"Choose gene list File to Upload(.csv/.txt/.xlsx/.xls):", accept = NULL),
       actionButton(ns("file_submit"), strong("Submit"), styleclass = "success"),
       br(),
       br(),
@@ -38,9 +38,18 @@ mod_gff_server <- function(input, output, session){
     }
   })
   
+  filedata2 <- eventReactive(input$file_submit,{
+    infile2 <- input$filename2
+    if (is.null(infile2)){
+      return(NULL)
+    }else{
+      readLines(infile2$datapath)
+    }
+  })
+  
   motif_loc <- eventReactive(input$file_submit,{
     df <- filedata()
-    gff_to_loc(df)
+    gff_to_loc(df, mRNA_ID = filedata2())
   })
   
   output$loci_result <- renderDT({
