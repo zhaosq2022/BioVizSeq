@@ -11,6 +11,7 @@ combi_p(
   pfam_path = NULL,
   cdd_path = NULL,
   fa_path = NULL,
+  smart_path = FALSE,
   plantcare_path = NULL,
   promoter_length = NULL,
   renamefile = NULL,
@@ -31,6 +32,8 @@ combi_p(
 \item{cdd_path}{The path of cdd result file (.txt).}
 
 \item{fa_path}{The path of protein file (.fa/fasta).}
+
+\item{smart_path}{Do SMART or not. (TRUE or FALSE)}
 
 \item{plantcare_path}{The path of plantcare file (.tab).}
 
