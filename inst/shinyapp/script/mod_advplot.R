@@ -10,6 +10,8 @@ mod_advplot_ui <- function(id){
       fileInput(ns("filepfam"),"Choose PFAM File to Upload(.tsv):", accept = NULL),
       fileInput(ns("filecdd"),"Choose CDD File to Upload(.txt):", accept = NULL),
       fileInput(ns("filepep"),"Choose Protein File to Upload(.fa/.fasta):", accept = NULL),
+      selectInput(ns("filesmart"), label = "Do SMART:",
+                  c("FALSE", "TRUE")),
       
       fileInput(ns("fileplantcare"),"Choose Plantcare File to Upload(.tab):", accept = NULL),
       numericInput(ns("prolength"),label = "Promoter Length",value = 2000),
@@ -36,7 +38,7 @@ mod_advplot_ui <- function(id){
     
     mainPanel(
       h3("Advanced Plot:"),
-      withSpinner(plotOutput(ns("plot_result"), width='80%', height='800px'))
+      withSpinner(plotOutput(ns("plot_result"), width='100%', height='700px'))
     )
   )
 }
@@ -60,12 +62,21 @@ mod_advplot_server <- function(input, output, session){
     }
   })
   
+  dosmart <- eventReactive(input$file_submit,{
+    smart_do <- input$filesmart
+    if (smart_do == "FALSE")
+      return( FALSE )
+    else
+      return( TRUE )
+  })
+  
   element_plot <- eventReactive(input$file_submit,{
 
     plot_file <- combi_p(tree_path=input$filetree$datapath, gff_path = input$filegff$datapath,
                          meme_path = input$filememe$datapath, pfam_path = input$filepfam$datapath,
-                         cdd_path = input$filecdd$datapath, fa_path = input$filefa$datapath,
+                         cdd_path = input$filecdd$datapath, fa_path = input$filepep$datapath,
                          plantcare_path = input$fileplantcare$datapath,
+                         smart_path = dosmart(),
                          promoter_length = input$prolength,
                          renamefile = filedata(),
                          shape = input$shapemotif,
