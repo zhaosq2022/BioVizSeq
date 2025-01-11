@@ -10,8 +10,8 @@ Description: Visualizing the types and distribution of elements within
   bio-sequences. At the same time, We have developed a geom layer,
   geom_rrect(), that can generate rounded rectangles. No external references
   are used in the development of this package.
-License: Artistic-2.0
 Encoding: UTF-8
+License: Artistic-2.0
 Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
