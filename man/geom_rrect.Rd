@@ -17,7 +17,7 @@ geom_rrect(
 )
 }
 \arguments{
-\item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}. If specified and
+\item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}}. If specified and
 \code{inherit.aes = TRUE} (the default), it is combined with the default mapping
 at the top level of the plot. You must supply \code{mapping} if there is no plot
 mapping.}
@@ -53,15 +53,16 @@ of the four corners (xmin, xmax, ymin and ymax) like geom_rect().
 
 \code{geom_rrect()} understands the following aesthetics (required aesthetics are in bold):
 \itemize{
-\item \strong{\code{\link[ggplot2]{xmin}}}
-\item \strong{\code{\link[ggplot2]{xmax}}}
-\item \strong{\code{\link[ggplot2]{ymin}}}
-\item \strong{\code{\link[ggplot2]{ymax}}}
-\item \code{\link[ggplot2]{alpha}}
-\item \code{\link[ggplot2]{colour}}
-\item \code{\link[ggplot2]{fill}}
-\item \code{\link[ggplot2]{group}}
-\item \code{\link[ggplot2]{linetype}}
+\item \strong{\code{\link[=aes_position]{xmin}}}
+\item \strong{\code{\link[=aes_position]{xmax}}}
+\item \strong{\code{\link[=aes_position]{ymin}}}
+\item \strong{\code{\link[=aes_position]{ymax}}}
+\item \code{\link[=aes_colour_fill_alpha]{alpha}}
+\item \code{\link[=aes_colour_fill_alpha]{colour}}
+\item \code{\link[=aes_colour_fill_alpha]{fill}}
+\item \code{\link[=aes_group_order]{group}}
+\item \code{\link[=aes_linetype_size_shape]{linetype}}
+\item \code{\link[=aes_linetype_size_shape]{linewidth}}
 }
 Learn more about setting these aesthetics in \code{vignette("ggplot2-specs")}.
 }
