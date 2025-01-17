@@ -15,6 +15,7 @@ combi_p(
   plantcare_path = NULL,
   promoter_length = NULL,
   renamefile = NULL,
+  groupfile = NULL,
   shape = "RoundRect",
   r = 0.3,
   legend_size = 6
@@ -39,7 +40,9 @@ combi_p(
 
 \item{promoter_length}{The length of promoter.}
 
-\item{renamefile}{Rename file. Two cils: new_name and old_name.}
+\item{renamefile}{Rename file. Two cols: new_name and old_name.}
+
+\item{groupfile}{Group information. Two cols: label and Group.}
 
 \item{shape}{RoundRect or Rect.}
 
