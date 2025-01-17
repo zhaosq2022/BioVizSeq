@@ -5,6 +5,8 @@ mod_advplot_ui <- function(id){
       width = 4,
       h3(strong("The main options:")),
       fileInput(ns("filetree"),"Choose Tree File to Upload(.newk):", accept = NULL),
+      fileInput(ns("filegroup"),"Choose Group File to Upload(.csv/.txt/.xlsx/.xls):", accept = NULL),
+      
       fileInput(ns("filegff"),"Choose Annotation File to Upload(.gff/.gtf):", accept = NULL),
       fileInput(ns("filememe"),"Choose MEME File to Upload(.xml):", accept = NULL),
       fileInput(ns("filepfam"),"Choose PFAM File to Upload(.tsv):", accept = NULL),
@@ -17,12 +19,11 @@ mod_advplot_ui <- function(id){
       numericInput(ns("prolength"),label = "Promoter Length",value = 2000),
       
       fileInput(ns("filename"),"Choose Renamed File to Upload(.csv/.txt/.xlsx/.xls):", accept = NULL),
-      
       selectInput(ns("shapemotif"), label = "Element shape:",
                   c("RoundRect", "Rect")),
       
       numericInput(ns("roundr"),label = "RoundRect r value",value = 0.3),
-      numericInput(ns("legendsize"),label = "Legend size",value = 6),
+      numericInput(ns("legendsize"),label = "Legend size",value = 12),
       
       textAreaInput(ns("code_input"),"Combination select:", placeholder = "e.g. p_tree + p_gff + p_pfam"),
       
@@ -62,6 +63,21 @@ mod_advplot_server <- function(input, output, session){
     }
   })
   
+  groupdata <- eventReactive(input$file_submit,{
+    infile <- input$filegroup
+    if (is.null(infile)){
+      return(NULL)
+    }else{
+      if (grepl(".xls$|.xlsx$", infile$datapath, ignore.case = TRUE)) {
+        read.xlsx(infile$datapath,1, header=T)
+      } else if (grepl(".csv$", infile$datapath, ignore.case = TRUE)) {
+        read.csv(infile$datapath,sep=',', header=T)
+      } else if(grepl(".txt$", infile$datapath, ignore.case = TRUE)){
+        read.table(infile$datapath,sep = "\t", header = T,)
+      }
+    }
+  })
+  
   dosmart <- eventReactive(input$file_submit,{
     smart_do <- input$filesmart
     if (smart_do == "FALSE")
@@ -78,7 +94,7 @@ mod_advplot_server <- function(input, output, session){
                          plantcare_path = input$fileplantcare$datapath,
                          smart_path = dosmart(),
                          promoter_length = input$prolength,
-                         renamefile = filedata(),
+                         renamefile = filedata(), groupfile = groupdata(),
                          shape = input$shapemotif,
                          r = input$roundr, legend_size= input$legendsize
     )
@@ -93,7 +109,7 @@ mod_advplot_server <- function(input, output, session){
     code_str <- input$code_input
     ele_num <- str_count(code_str, "\\+") +1
     code_loc <- paste(" + plot_layout(ncol = ", ele_num,
-                      ") + plot_annotation(tag_levels = 'A')")
+                      ", guides = 'collect') + plot_annotation(tag_levels = 'A')")
     code_combi <- paste(code_str, code_loc)
     eval(parse(text = code_combi))
   })
