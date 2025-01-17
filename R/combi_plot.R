@@ -10,7 +10,8 @@
 #' @param smart_path Do SMART or not. (TRUE or FALSE) 
 #' @param plantcare_path The path of plantcare file (.tab).
 #' @param promoter_length The length of promoter.
-#' @param renamefile Rename file. Two cils: new_name and old_name.
+#' @param renamefile Rename file. Two cols: new_name and old_name.
+#' @param groupfile Group information. Two cols: label and Group.
 #' @param shape RoundRect or Rect.
 #' @param r The radius of rounded corners.
 #' @param legend_size The size of legend.
@@ -30,7 +31,7 @@ combi_p <- function(tree_path, gff_path = NULL,
                     meme_path = NULL, pfam_path = NULL, 
                     cdd_path = NULL, fa_path = NULL, smart_path = FALSE, 
                     plantcare_path = NULL, promoter_length = NULL, 
-                    renamefile = NULL, shape = "RoundRect", 
+                    renamefile = NULL, groupfile = NULL, shape = "RoundRect", 
                     r = 0.3, legend_size= 6
                        ){
   tree_file <- read.newick(tree_path, node.label = "support")
@@ -45,6 +46,31 @@ combi_p <- function(tree_path, gff_path = NULL,
     name_map <- setNames(renamefile$new_name, renamefile$old_name)
     p_tree$data$label <- name_map[p_tree$data$label]
   }
+  
+  if(is.null(groupfile)){
+    p_tree = p_tree
+  }else{
+    group_loc <- merge(p_tree$data, groupfile, by= "label")
+    group_loc$yend <- group_loc$y
+    group_loc$yend <- ifelse(group_loc$yend == min(group_loc$y), group_loc$yend + 0.5, group_loc$yend)
+    group_loc$y <- ifelse(group_loc$y == max(group_loc$yend), group_loc$y - 0.5, group_loc$y)
+    
+    p_tree <- p_tree + geom_rect(data = group_loc, aes(
+      xmin = 0,
+      xmax = x,
+      ymin = y+0.5,
+      ymax = yend-0.5,
+      fill = Group
+    ),alpha = 0.5) + 
+      geom_tree() + 
+      theme(legend.position = "right",
+            legend.margin = margin(0, 0, 0, 0),
+            legend.title = element_blank(),
+            legend.text = element_text(size = 10),
+            legend.key.size = unit(legend_size, "pt")
+      ) 
+  }
+
   
   file_dir <- file.path(tempdir(), "the_order")
   
@@ -67,11 +93,11 @@ combi_p <- function(tree_path, gff_path = NULL,
             plot.margin = margin(10, 10, 10, 0),
             #panel.spacing = unit(0, "lines"),
             #legend.position = "top",
-            legend.position = "bottom",
-            legend.justification = c(0.5, 1),
+            legend.position = "right",
+            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
             legend.title = element_blank(),
-            legend.text = element_text(size = 8),
+            legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt")) 
   }
   
@@ -88,11 +114,11 @@ combi_p <- function(tree_path, gff_path = NULL,
             plot.margin = margin(10, 10, 10, 0),
             #panel.spacing = unit(0, "lines"),
             #legend.position = "top",
-            legend.position = "bottom",
-            legend.justification = c(0.5, 1),
+            legend.position = "right",
+            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
             legend.title = element_blank(),
-            legend.text = element_text(size = 8),
+            legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt")) 
   }
   
@@ -105,11 +131,11 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.text.y = element_blank(),
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
-            legend.position = "bottom",
-            legend.justification = c(0.5, 1),
+            legend.position = "right",
+            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
             legend.title = element_blank(),
-            legend.text = element_text(size = 8),
+            legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt"))
   }else{
      p_cdd = NULL
@@ -125,11 +151,11 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
             #legend.position = "top",
-            legend.position = "bottom",
-            legend.justification = c(0.5, 1),
+            legend.position = "right",
+            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
             legend.title = element_blank(),
-            legend.text = element_text(size = 8),
+            legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt"))
   }else{
     p_smart = NULL
@@ -147,11 +173,11 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.text.y = element_blank(),
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
-            legend.position = "bottom",
-            legend.justification = c(0.5, 1),
+            legend.position = "right",
+            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
             legend.title = element_blank(),
-            legend.text = element_text(size = 8),
+            legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt"))
   }
   
@@ -166,11 +192,11 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.text.y = element_blank(),
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
-            legend.position = "bottom",
-            legend.justification = c(0.5, 1),
+            legend.position = "right",
+            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
             legend.title = element_blank(),
-            legend.text = element_text(size = 8),
+            legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt"))
   }else{
     p_plantcare = NULL
