@@ -192,7 +192,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 domain_loc <- smart_to_loc(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID12315310532207961734854988nxRvSILzcN. Waiting for results.
+#> Job entered the queue with ID12315310540131401737102781wQtRYAVCWp. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 
@@ -209,7 +209,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 smart_plot(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID12315310532216911734855018RDVNZgsHWd. Waiting for results.
+#> Job entered the queue with ID12315310540152211737102812xSbfSAzwMV. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 ```
@@ -264,7 +264,7 @@ plot_file <- combi_p(tree_path = tree_path, gff_path = gff_path,
                      meme_path = meme_path, pfam_path = pfam_path)
 
 plot_file$p_tree + plot_file$p_gff + plot_file$p_pfam +
-  plot_file$p_meme +plot_layout(ncol = 4) +
+  plot_file$p_meme +plot_layout(ncol = 4, guides = 'collect') +
   plot_annotation(
     tag_levels = 'A'
   )
