@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">BioVizSeq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,11 @@
 <span>  pfam_path <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  cdd_path <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  fa_path <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  smart_path <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  plantcare_path <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  promoter_length <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  renamefile <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  groupfile <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  shape <span class="op">=</span> <span class="st">"RoundRect"</span>,</span>
 <span>  r <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>  legend_size <span class="op">=</span> <span class="fl">6</span></span>
@@ -86,12 +89,24 @@
 <dd><p>The path of protein file (.fa/fasta).</p></dd>
 
 
+<dt>smart_path</dt>
+<dd><p>Do SMART or not. (TRUE or FALSE)</p></dd>
+
+
 <dt>plantcare_path</dt>
 <dd><p>The path of plantcare file (.tab).</p></dd>
 
 
 <dt>promoter_length</dt>
 <dd><p>The length of promoter.</p></dd>
+
+
+<dt>renamefile</dt>
+<dd><p>Rename file. Two cols: new_name and old_name.</p></dd>
+
+
+<dt>groupfile</dt>
+<dd><p>Group information. Two cols: label and Group.</p></dd>
 
 
 <dt>shape</dt>
