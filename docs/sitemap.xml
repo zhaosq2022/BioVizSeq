@@ -34,9 +34,6 @@
     <loc>/reference/geom_rrect.html</loc>
   </url>
   <url>
-    <loc>/reference/get_motif_location.html</loc>
-  </url>
-  <url>
     <loc>/reference/gff_plot.html</loc>
   </url>
   <url>
@@ -59,9 +56,6 @@
   </url>
   <url>
     <loc>/reference/motif_plot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/motif_seq.html</loc>
   </url>
   <url>
     <loc>/reference/pfam_plot.html</loc>
