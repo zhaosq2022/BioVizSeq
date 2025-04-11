@@ -221,7 +221,7 @@ plot_file$p_tree + plot_file$p_gff + plot_file$p_pfam +
   )
 ```
 
-```{r adv_plot_plantcare, fig.width=12, fig.height=10}
+```{r adv_plantcare, fig.width=12, fig.height=10}
 library(patchwork)
 tree_path <- system.file("extdata", "idpep.nwk", package = "BioVizSeq")
 plantcare_path <- system.file("extdata", "plantCARE_output.tab", package = "BioVizSeq") 
