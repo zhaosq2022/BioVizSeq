@@ -1,12 +1,12 @@
 ---
 output: 
-  github_document:
   html_document:
     toc: true
     toc_depth: 3
     toc_float: true
     toc_float_position: right
     toc_float_method: scroll
+  github_document:
 ---
 
 ```{r, include = FALSE}
