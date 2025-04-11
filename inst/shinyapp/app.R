@@ -26,7 +26,8 @@ ui <- fluidPage(
       tabPanel("PFAM Plot", mod_pfamplot_ui("pfamplot"), icon = icon("r-project")),
       tabPanel("CDD Plot", mod_cddplot_ui("cddplot"), icon = icon("r-project")),
       tabPanel("SMART Plot", mod_smartplot_ui("smartplot"), icon = icon("r-project")),
-      tabPanel("Plantcare Plot", mod_plantcareplot_ui("plantcareplot"), icon = icon("r-project"))
+      tabPanel("Plantcare Plot1", mod_plantcareplot_ui("plantcareplot"), icon = icon("r-project")),
+      tabPanel("Plantcare Plot2", mod_plantcareplot2_ui("plantcareplot2"), icon = icon("r-project"))
     ),
     
     navbarMenu(
@@ -46,7 +47,9 @@ ui <- fluidPage(
     
     tabPanel("Basic Plot", mod_plot_ui("plot"), icon = icon("bars-staggered")),
     
-    tabPanel("Advance Plot", mod_advplot_ui("advplot"), icon = icon("hands-asl-interpreting")),
+    tabPanel("Advance Plot1", mod_advplot_ui("advplot"), icon = icon("hands-asl-interpreting")),
+    
+    tabPanel("Advance plot2", mod_advplot2_ui("advplot2"), icon = icon("hands-asl-interpreting")),
     
     tabPanel("About", aboutpage, icon = icon("info-circle")),
     
@@ -68,7 +71,9 @@ server <- function(input, output, session) {
   callModule(mod_cddplot_server, "cddplot")
   callModule(mod_smartplot_server, "smartplot")
   callModule(mod_plantcareplot_server, "plantcareplot")
+  callModule(mod_plantcareplot2_server, "plantcareplot2")
   callModule(mod_advplot_server, "advplot")
+  callModule(mod_advplot2_server, "advplot2")
   
   observeEvent(input$disconnect, {
     session$close()

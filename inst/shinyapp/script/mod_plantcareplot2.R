@@ -1,20 +1,16 @@
-mod_plantcareplot_ui <- function(id){
+mod_plantcareplot2_ui <- function(id){
   ns <- NS(id)
   tagList(
     sidebarPanel(
       width = 4,
       h3(strong("The main options:")),
       fileInput(ns("filename"),"Choose plantcare File to Upload(.tab):", accept = NULL),
-      numericInput(ns("prolength"),label = "Promoter Length",value = 2000),
       
       fileInput(ns("filename2"),"Choose Order File to Upload(.csv/.txt/.xlsx/.xls):", accept = NULL),
-      selectInput(ns("shapemotif"), label = "Element shape:",
-                  c("RoundRect", "Rect")),
+      selectInput(ns("plottype"), label = "Plot type:",
+                  c("Heatmap", "Bar1", "Bar2")),
       
-      numericInput(ns("roundr"),label = "RoundRect r value",value = 0.3),
-      numericInput(ns("legendsize"),label = "Legend size",value = 15),
-      
-      actionButton(ns("file_submit"), strong("Submit All Data"), styleclass = "success"),
+      actionButton(ns("file_submit"), strong("Run"), styleclass = "success"),
       br(),
       br(),
       h3(strong("Download options:")),
@@ -32,7 +28,7 @@ mod_plantcareplot_ui <- function(id){
 }
 
 
-mod_plantcareplot_server <- function(input, output, session){
+mod_plantcareplot2_server <- function(input, output, session){
   ns <- session$ns
   
   filedata <- eventReactive(input$file_submit,{
@@ -54,11 +50,13 @@ mod_plantcareplot_server <- function(input, output, session){
   })
 
   element_plot <- eventReactive(input$file_submit,{
-    plantcare_plot(filedata(), the_order = filedata2(), promoter_length = input$prolength,
-               shape = input$shapemotif, 
-               r = input$roundr, 
-               legend_size= input$legendsize
-    )
+    if(input$plottype == "Heatmap"){
+      plantcare_plot1(filedata(), the_order = filedata2())
+    }else if (input$plottype == "Bar1") {
+      plantcare_plot2(filedata(), the_order = filedata2())
+    }else{
+      plantcare_plot3(filedata(), the_order = filedata2())
+    }
   })
   
   output$plot_result <- renderPlot({
@@ -68,7 +66,7 @@ mod_plantcareplot_server <- function(input, output, session){
   
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Plantcare_plot1", '.pdf')
+      paste0("Plantcare_plot2", '.pdf')
     },
     contentType = "image/pdf",
     content = function(file) {

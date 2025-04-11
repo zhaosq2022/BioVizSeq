@@ -1,6 +1,13 @@
-## Version 1.0.2 (2025-01-17)
+## Version 1.0.3 (2025-04-11)
+
+ - Changed some errors in the plot of plantcare result
+ - Added several plotting functions for plantcare
  - Improve the combi_p function
- 
+
+## Version 1.0.2 (2025-03-20)
+
+ - Improve the combi_p function
+
 ## Version 1.0.1 (2025-01-11)
  - `get_motif_location` to `meme_to_loc`.
  - `motif_seq` to `meme_seq`.

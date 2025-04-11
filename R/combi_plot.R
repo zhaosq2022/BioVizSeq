@@ -65,7 +65,6 @@ combi_p <- function(tree_path, gff_path = NULL,
       geom_tree() + 
       theme(legend.position = "right",
             legend.margin = margin(0, 0, 0, 0),
-            legend.title = element_blank(),
             legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt")
       ) 
@@ -91,12 +90,8 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.text.y = element_blank(),
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
-            #panel.spacing = unit(0, "lines"),
-            #legend.position = "top",
             legend.position = "right",
-            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
-            legend.title = element_blank(),
             legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt")) 
   }
@@ -112,12 +107,8 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.text.y = element_blank(),
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
-            #panel.spacing = unit(0, "lines"),
-            #legend.position = "top",
             legend.position = "right",
-            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
-            legend.title = element_blank(),
             legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt")) 
   }
@@ -132,9 +123,7 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
             legend.position = "right",
-            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
-            legend.title = element_blank(),
             legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt"))
   }else{
@@ -150,11 +139,8 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.text.y = element_blank(),
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
-            #legend.position = "top",
             legend.position = "right",
-            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
-            legend.title = element_blank(),
             legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt"))
   }else{
@@ -174,9 +160,7 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
             legend.position = "right",
-            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
-            legend.title = element_blank(),
             legend.text = element_text(size = 10),
             legend.key.size = unit(legend_size, "pt"))
   }
@@ -193,20 +177,58 @@ combi_p <- function(tree_path, gff_path = NULL,
             axis.ticks.y = element_blank(), 
             plot.margin = margin(10, 10, 10, 0),
             legend.position = "right",
-            #legend.justification = c(0.5, 1),
             legend.margin = margin(0, 0, 0, 0),
-            legend.title = element_blank(),
             legend.text = element_text(size = 10),
+            legend.key.size = unit(legend_size, "pt"))
+    
+    p_plantcare1 <- plantcare_plot1(plantcare_path, the_order = order_path) +
+      labs(y="") + 
+      theme(axis.title.y = element_blank(), 
+            axis.text.y = element_blank(),
+            axis.ticks.y = element_blank(), 
+            plot.margin = margin(10, 10, 10, 0),
+            legend.position = "right",
+            legend.justification = c(0.5, 1),
+            legend.margin = margin(0, 0, 0, 0),
+            legend.text = element_text(size = 8),
+            legend.key.size = unit(legend_size, "pt"))
+    
+    p_plantcare2 <- plantcare_plot2(plantcare_path, the_order = order_path) +
+      labs(y="") + 
+      theme(axis.title.y = element_blank(), 
+            axis.text.y = element_blank(),
+            axis.ticks.y = element_blank(), 
+            plot.margin = margin(10, 10, 10, 0),
+            legend.position = "right",
+            legend.justification = c(0.5, 1),
+            legend.margin = margin(0, 0, 0, 0),
+            legend.text = element_text(size = 8),
+            legend.key.size = unit(legend_size, "pt"))
+    
+    p_plantcare3 <- plantcare_plot3(plantcare_path, the_order = order_path) +
+      labs(y="") + 
+      theme(axis.title.y = element_blank(), 
+            axis.text.y = element_blank(),
+            axis.ticks.y = element_blank(), 
+            plot.margin = margin(10, 10, 10, 0),
+            legend.position = "right",
+            legend.justification = c(0.5, 1),
+            legend.margin = margin(0, 0, 0, 0),
+            legend.text = element_text(size = 8),
             legend.key.size = unit(legend_size, "pt"))
   }else{
     p_plantcare = NULL
+    p_plantcare1 = NULL
+    p_plantcare2 = NULL
+    p_plantcare3 = NULL
   }
 
   unlink(file_dir, recursive = TRUE)
   
   plot_list <- list(p_tree = p_tree, p_gff = p_gff, p_pfam = p_pfam, 
                     p_meme = p_meme, p_smart = p_smart, p_cdd = p_cdd,
-                    p_plantcare = p_plantcare
+                    p_plantcare = p_plantcare, p_plantcare1 = p_plantcare1,
+                    p_plantcare2 = p_plantcare2, p_plantcare3 = p_plantcare3
                     )
   
   return(plot_list)

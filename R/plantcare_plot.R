@@ -90,12 +90,32 @@ upload_fa_to_plantcare <- function(fasta_file, email) {
 plantcare_classify <- function(plantcare_file){
   plantcare_data <- plantcare_file
   plantcare_data <- plantcare_data[plantcare_data[, 2] != "", ]
-  plantcare_data <- plantcare_data[!(plantcare_data[, 8] %in% c("", "?")), ]
+  plantcare_data <- plantcare_data[plantcare_data[, 8] != "?", ]
   plantcare_data$V9 <- NA
   plantcare_data$V10 <- NA
   plantcare_data[,2] <- gsub("G-Box", "G-box", plantcare_data[,2])
+  plantcare_data[,2] <- gsub("Myc", "MYC", plantcare_data[,2])
+  
+  plantcare_data <- plantcare_data[!grepl("Unnamed", plantcare_data[,2]),]
+  plantcare_data <- plantcare_data[!grepl("TATA-box", plantcare_data[,2]),]
+  plantcare_data <- plantcare_data[!grepl("CAAT-box", plantcare_data[,2]),]
+  
+  plantcare_data <- plantcare_data[!(grepl("ABRE", plantcare_data[,2]) & plantcare_data[,3] != "ACGTG"),]
+  
+  plantcare_data <- plantcare_data[!(plantcare_data[,2] == "G-box" & nchar(as.character(plantcare_data[, 3])) != 6),]
+  
+  plantcare_data <- plantcare_data[plantcare_data[, 2] != "as-1", ]
+  
+  plantcare_data[plantcare_data[,2] == "A-box", 8] <- "elicitor or light responsive"
+  plantcare_data[plantcare_data[,2] == "DRE core", 8] <- "drought and high-salinity stress responsive genes"
+  plantcare_data[plantcare_data[,2] == "ERE", 8] <- "ethylene response element"
+  plantcare_data[plantcare_data[,2] == "STRE", 8] <- "heat shock protein-related element"
+  plantcare_data[plantcare_data[,2] == "W box", 8] <- "Fungal and wound"
+  plantcare_data[plantcare_data[,2] == "3-AF1 binding site", 2] <- "3-AF1"
   
   plantcare_data$V9 <- ifelse(grepl("light respon", plantcare_data[, 8]), "light", plantcare_data[, 9])
+  plantcare_data$V10 <- ifelse(grepl("light respon", plantcare_data[, 8]), "Light responsive", plantcare_data[, 10])
+  
   plantcare_data$V9 <- ifelse(grepl("heat", plantcare_data[, 8]), "heat", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("low-temp", plantcare_data[, 8]), "low-temperature", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("circadian", plantcare_data[, 8]), "circadian", plantcare_data[, 9])
@@ -104,16 +124,16 @@ plantcare_classify <- function(plantcare_file){
   plantcare_data$V9 <- ifelse(grepl("drought", plantcare_data[, 8]), "drought", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("anaerobic", plantcare_data[, 8]), "anaerobic", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("anoxic", plantcare_data[, 8]), "anoxic", plantcare_data[, 9])
-  plantcare_data$V9 <- ifelse(grepl("anoxic", plantcare_data[, 8]), "anoxic", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("dehydration, low-temp, salt stresses", plantcare_data[, 8]), "mixed stress", plantcare_data[, 9])
-  plantcare_data$V10 <- ifelse(grepl("light respon|low-temp|heat|circadian|defense and stress responsivenes|wound|drought|anaerobic|anoxic", plantcare_data[, 8]), "Environment", plantcare_data[, 10])
+  plantcare_data$V10 <- ifelse(grepl("low-temp|heat|circadian|defense and stress responsivenes|wound|drought|anaerobic|anoxic", plantcare_data[, 8]), "Stress responsive", plantcare_data[, 10])
   
   plantcare_data$V9 <- ifelse(grepl("auxin", plantcare_data[, 8]), "auxin", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("gibberellin", plantcare_data[, 8]), "gibberellin", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("salicylic acid", plantcare_data[, 8]), "salicylic acid", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("abscisic acid", plantcare_data[, 8]), "abscisic acid", plantcare_data[, 9])
+  plantcare_data$V9 <- ifelse(grepl("ethylene", plantcare_data[, 8]), "ethylene", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("JA", plantcare_data[, 8]), "JA", plantcare_data[, 9])
-  plantcare_data$V10 <- ifelse(grepl("auxin|gibberellin|salicylic acid|abscisic acid|JA", plantcare_data[, 8]), "Phytohormone", plantcare_data[, 10])
+  plantcare_data$V10 <- ifelse(grepl("auxin|gibberellin|salicylic acid|abscisic acid|JA|ethylene", plantcare_data[, 8]), "Phytohormone responsive", plantcare_data[, 10])
   
   plantcare_data$V9 <- ifelse(grepl("differentiation", plantcare_data[, 8]), "tissue", plantcare_data[, 9])
   plantcare_data$V9 <- ifelse(grepl("endosperm", plantcare_data[, 8]), "tissue", plantcare_data[, 9])
@@ -125,6 +145,16 @@ plantcare_classify <- function(plantcare_file){
   plantcare_data$V10 <- ifelse(grepl("differentiation|endosperm|meristem|metabolism|seed|root|cell cycle|biosynth", plantcare_data[, 8]), "Growth and development", plantcare_data[, 10])
   
   plantcare_data <- plantcare_data[!is.na(plantcare_data[, 9]), ]
+  
+  #去冗余
+  rows_to_update <- plantcare_data[, 6] == "-"
+  plantcare_data[rows_to_update, 4] <- plantcare_data[rows_to_update, 4] + plantcare_data[rows_to_update, 5]
+  
+  unique_rows <- !duplicated(plantcare_data[, c(1,4,6)])
+  plantcare_data <- plantcare_data[unique_rows, ]
+  
+  rows_to_update <- plantcare_data[, 6] == "-"
+  plantcare_data[rows_to_update, 4] <- plantcare_data[rows_to_update, 4] - plantcare_data[rows_to_update, 5]
   
   colnames(plantcare_data)[1] <- "ID"
   colnames(plantcare_data)[2] <- "name"
@@ -215,6 +245,7 @@ plantcare_statistic2 <- function(plantcare_data){
 }
 
 
+
 #' Visualization of cis-element in plantcare result file
 #' 
 #' @title plantcare_plot
@@ -260,3 +291,131 @@ plantcare_plot <- function(plantcare_file, promoter_length = 2000,
     labs(x="Promoter Length", y="Gene")
 }
 
+#' Heatmap of the number of cis-element in plantcare result file
+#' 
+#' @title plantcare_plot1
+#' @param plantcare_file The path of plantcare result file (.tab).
+#' @param the_order The path of order file. A List of Gene ID , One ID Per Line.
+#' @export
+#' @author Shiqi Zhao
+#' @return p
+#' @examples
+#' plantcare_path <- system.file("extdata", "plantCARE_output.tab", package = "BioVizSeq") 
+#' plantcare_plot1(plantcare_path)
+#' 
+#' @import ggplot2
+#' @import ggh4x
+plantcare_plot1 <- function(plantcare_file, the_order = NULL){
+
+  plantcare_data <- read.table(plantcare_file, header = F, sep = '\t', quote="")
+  
+  plantcare_classify_data <- plantcare_classify(plantcare_data)
+  
+  data_combined <- plantcare_statistic1(plantcare_classify_data)
+  
+  if (is.null(the_order)) {
+    the_order <- as.vector(unique(data_combined$ID))
+  }else{
+    the_order <- readLines(the_order)
+    the_order <- as.data.frame(the_order)
+    the_order <- as.vector(the_order[,1])
+  }
+  data_combined$ID<-factor(data_combined$ID,levels=rev(the_order))
+  
+  ggplot(data_combined, aes(interaction(name,class), y = ID)) +
+    geom_tile(aes(fill = frequency),color = "grey80",linewidth = 0.5) +
+    scale_fill_gradientn(
+      colours = c("white", "#7baf57", "#448e12"),
+      values = c(0, 0.5, 1)
+    ) + 
+    geom_text(aes(label = ifelse(frequency == 0, "", frequency)),size = 2.5) + 
+    labs(fill = "Count") +
+    guides(x=ggh4x::guide_axis_nested()) + 
+    labs(x = "", y = "Gene") + 
+    theme_bw() + 
+    theme(axis.text.x=element_text(color="black",angle= 90,size= 8,hjust= 0, vjust = 0.5),
+          ggh4x.axis.nestline.x = element_line(linewidth = 1),
+          ggh4x.axis.nesttext.x = element_text(colour = "#6a3d9a",angle =0, hjust = 0.5, vjust = 0.5, size = 8)
+    ) +
+    scale_x_discrete(expand = c(0,0),position = "top")
+}
+
+#' Bar plot1 of the number of cis-element in plantcare result file
+#' 
+#' @title plantcare_plot2
+#' @param plantcare_file The path of plantcare result file (.tab).
+#' @param the_order The path of order file. A List of Gene ID , One ID Per Line.
+#' @export
+#' @author Shiqi Zhao
+#' @return p
+#' @examples
+#' plantcare_path <- system.file("extdata", "plantCARE_output.tab", package = "BioVizSeq") 
+#' plantcare_plot2(plantcare_path)
+plantcare_plot2 <- function(plantcare_file, the_order = NULL){
+  plantcare_data <- read.table(plantcare_file, header = F, sep = '\t', quote="")
+  
+  plantcare_classify_data <- plantcare_classify(plantcare_data)
+  
+  data_combined <- plantcare_statistic2(plantcare_classify_data)
+  
+  if (is.null(the_order)) {
+    the_order <- as.vector(unique(data_combined$ID))
+  }else{
+    the_order <- readLines(the_order)
+    the_order <- as.data.frame(the_order)
+    the_order <- as.vector(the_order[,1])
+  }
+  data_combined$ID<-factor(data_combined$ID,levels=rev(the_order))
+  
+  ggplot(data_combined, aes(x = frequency, y = ID, fill = class)) + 
+    geom_bar(stat = "identity", alpha = 0.75, position = "fill") + 
+    labs(x = "", y = "Gene", fill = "Description") + 
+    scale_x_continuous(expand = expansion(mult = c(0, 0.1)), position = "top") +
+    theme(
+      panel.background = element_blank(),
+      panel.border = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.x = element_line(color = "gray90", linewidth = 0.2),
+      panel.grid.major.y = element_blank()
+    )
+}
+
+#' Bar plot2 of the number of cis-element in plantcare result file
+#' 
+#' @title plantcare_plot3
+#' @param plantcare_file The path of plantcare result file (.tab).
+#' @param the_order The path of order file. A List of Gene ID , One ID Per Line.
+#' @export
+#' @author Shiqi Zhao
+#' @return p
+#' @examples
+#' plantcare_path <- system.file("extdata", "plantCARE_output.tab", package = "BioVizSeq") 
+#' plantcare_plot3(plantcare_path)
+plantcare_plot3 <- function(plantcare_file, the_order = NULL){
+  plantcare_data <- read.table(plantcare_file, header = F, sep = '\t', quote="")
+  
+  plantcare_classify_data <- plantcare_classify(plantcare_data)
+  
+  data_combined <- plantcare_statistic2(plantcare_classify_data)
+  
+  if (is.null(the_order)) {
+    the_order <- as.vector(unique(data_combined$ID))
+  }else{
+    the_order <- readLines(the_order)
+    the_order <- as.data.frame(the_order)
+    the_order <- as.vector(the_order[,1])
+  }
+  data_combined$ID<-factor(data_combined$ID,levels=rev(the_order))
+  
+  ggplot(data_combined, aes(x = frequency, y = ID, fill = class)) + 
+    geom_bar(stat = "identity", alpha = 0.75) + 
+    labs(x = "", y = "Gene", fill = "Description") + 
+    scale_x_continuous(expand = expansion(mult = c(0, 0.1)), position = "top") +
+    theme(
+      panel.background = element_blank(),
+      panel.border = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.x = element_line(color = "gray90", linewidth = 0.2),
+      panel.grid.major.y = element_blank()
+    )
+}
