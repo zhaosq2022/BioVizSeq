@@ -39,16 +39,13 @@ p
 Visualization of motif in meme file or mast file
 }
 \examples{
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
-meme_plot(meme_path)
-
 mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 meme_plot(mast_path)
 
-meme_plot(meme_path, motif_select="1", show_motif_id = TRUE)
+meme_plot(mast_path, motif_select="1", show_motif_id = TRUE)
 
 order_path <- system.file("extdata", "order.csv", package = "BioVizSeq")
-meme_plot(meme_path, the_order=order_path, motif_select="1")
+meme_plot(mast_path, the_order=order_path, motif_select="1")
 }
 \author{
 Shiqi Zhao

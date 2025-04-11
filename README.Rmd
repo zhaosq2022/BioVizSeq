@@ -81,7 +81,7 @@ meme.xml or mast.xml
 #### 4.2.1 Step by step
 
 ```{r meme_step, fig.width=8, fig.height=8}
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq") 
+meme_path <- system.file("extdata", "mast.xml", package = "BioVizSeq") 
 meme_file <- readLines(meme_path)
 motif_loc <- meme_to_loc(meme_file)
 

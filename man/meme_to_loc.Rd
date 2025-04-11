@@ -16,9 +16,6 @@ list
 Extract the location information of motif from mast or meme file
 }
 \examples{
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq") 
-meme_file <- readLines(meme_path)
-motif_loc <- meme_to_loc(meme_file)
 
 mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq") 
 mast_file <- readLines(mast_path)

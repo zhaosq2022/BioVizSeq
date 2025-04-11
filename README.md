@@ -102,7 +102,7 @@ meme.xml or mast.xml
 #### 4.2.1 Step by step
 
 ``` r
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq") 
+meme_path <- system.file("extdata", "mast.xml", package = "BioVizSeq") 
 meme_file <- readLines(meme_path)
 motif_loc <- meme_to_loc(meme_file)
 
@@ -192,7 +192,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 domain_loc <- smart_to_loc(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID39171115118490791744378513YoahlMjExK. Waiting for results.
+#> Job entered the queue with ID3917111511880801744383449ENDkjSkPHY. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 
@@ -209,7 +209,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 smart_plot(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID3917111511822181744378542YVPHawdrUJ. Waiting for results.
+#> Job entered the queue with ID39171115118198521744383592TvKgSiKgen. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 ```
