@@ -114,7 +114,7 @@ motif_plot(motif_loc$table_loc, motif_loc$gene_length)
 #### 4.2.2 One step
 
 ``` r
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
+meme_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 meme_plot(meme_path)
 ```
 
@@ -192,7 +192,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 domain_loc <- smart_to_loc(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID3917111511880801744383449ENDkjSkPHY. Waiting for results.
+#> Job entered the queue with ID39171115118211801744387881ZDjUBxRVzJ. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 
@@ -209,7 +209,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 smart_plot(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID39171115118198521744383592TvKgSiKgen. Waiting for results.
+#> Job entered the queue with ID39171115118238181744387910nzudunHPXm. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 ```
@@ -258,7 +258,7 @@ p_tree, p_gff, p_pfam, p_meme, p_smart, p_cdd, p_plantcare
 library(patchwork)
 tree_path <- system.file("extdata", "idpep.nwk", package = "BioVizSeq")
 gff_path <- system.file("extdata", "idpro.gff3", package = "BioVizSeq")
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
+meme_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 pfam_path <- system.file("extdata", "iprscan.tsv", package = "BioVizSeq")
 plot_file <- combi_p(tree_path = tree_path, gff_path = gff_path,
                      meme_path = meme_path, pfam_path = pfam_path)

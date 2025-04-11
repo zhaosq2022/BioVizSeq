@@ -168,7 +168,7 @@
 <h4 id="id_422-one-step">4.2.2 One step<a class="anchor" aria-label="anchor" href="#id_422-one-step"></a>
 </h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">meme_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"meme.xml"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">meme_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"mast.xml"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/meme_plot.html">meme_plot</a></span><span class="op">(</span><span class="va">meme_path</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-meme_one-1.png" width="60%" height="60%"></p>
 </div>
@@ -240,7 +240,7 @@
 <span><span class="va">domain_loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/smart_to_loc.html">smart_to_loc</a></span><span class="op">(</span><span class="va">fa_path</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_002...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_003...</span></span>
-<span><span class="co">#&gt; Job entered the queue with ID3917111511880801744383449ENDkjSkPHY. Waiting for results.</span></span>
+<span><span class="co">#&gt; Job entered the queue with ID39171115118211801744387881ZDjUBxRVzJ. Waiting for results.</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_004...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_005...</span></span>
 <span></span>
@@ -256,7 +256,7 @@
 <span><span class="fu"><a href="reference/smart_plot.html">smart_plot</a></span><span class="op">(</span><span class="va">fa_path</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_002...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_003...</span></span>
-<span><span class="co">#&gt; Job entered the queue with ID39171115118198521744383592TvKgSiKgen. Waiting for results.</span></span>
+<span><span class="co">#&gt; Job entered the queue with ID39171115118238181744387910nzudunHPXm. Waiting for results.</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_004...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_005...</span></span></code></pre></div>
 <p><img src="reference/figures/README-smart_one-1.png" width="60%" height="60%"></p>
@@ -303,7 +303,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span></span>
 <span><span class="va">tree_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"idpep.nwk"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
 <span><span class="va">gff_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"idpro.gff3"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
-<span><span class="va">meme_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"meme.xml"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
+<span><span class="va">meme_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"mast.xml"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
 <span><span class="va">pfam_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"iprscan.tsv"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
 <span><span class="va">plot_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/combi_p.html">combi_p</a></span><span class="op">(</span>tree_path <span class="op">=</span> <span class="va">tree_path</span>, gff_path <span class="op">=</span> <span class="va">gff_path</span>,</span>
 <span>                     meme_path <span class="op">=</span> <span class="va">meme_path</span>, pfam_path <span class="op">=</span> <span class="va">pfam_path</span><span class="op">)</span></span>

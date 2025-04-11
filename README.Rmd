@@ -91,7 +91,7 @@ motif_plot(motif_loc$table_loc, motif_loc$gene_length)
 #### 4.2.2 One step
 
 ```{r meme_one, fig.width=8, fig.height=8}
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
+meme_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 meme_plot(meme_path)
 ```
 
@@ -209,7 +209,7 @@ p_tree, p_gff, p_pfam, p_meme, p_smart, p_cdd, p_plantcare
 library(patchwork)
 tree_path <- system.file("extdata", "idpep.nwk", package = "BioVizSeq")
 gff_path <- system.file("extdata", "idpro.gff3", package = "BioVizSeq")
-meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
+meme_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 pfam_path <- system.file("extdata", "iprscan.tsv", package = "BioVizSeq")
 plot_file <- combi_p(tree_path = tree_path, gff_path = gff_path,
                      meme_path = meme_path, pfam_path = pfam_path)
