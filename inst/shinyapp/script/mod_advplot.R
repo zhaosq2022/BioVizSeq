@@ -34,7 +34,9 @@ mod_advplot_ui <- function(id){
       numericInput(ns("picheigh"),label = "Graph heigh value",value = 9.5),
       numericInput(ns("picwidth"),label = "Graph width value",value = 9.5),
       downloadButton(ns("downloadpic"),label = "Download Picture!"),
-      
+      radioButtons(ns("format"), "Figure type:", 
+                   choices = c("PNG" = "png", "PDF" = "pdf"), 
+                   selected = "png")
     ),
     
     mainPanel(
@@ -102,6 +104,7 @@ mod_advplot_server <- function(input, output, session){
     p_tree <- plot_file$p_tree
     p_gff <- plot_file$p_gff
     p_smart <-plot_file$p_smart
+    p_pfam <- plot_file$p_pfam
     p_cdd <- plot_file$p_cdd
     p_plantcare <- plot_file$p_plantcare
     p_meme <- plot_file$p_meme
@@ -119,16 +122,25 @@ mod_advplot_server <- function(input, output, session){
   })
   
   
+  
+  
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Advanced_plot", '.pdf')
+      paste("Advanced_plot", input$format, sep = ".")
     },
-    contentType = "image/pdf",
     content = function(file) {
-      pdf(file, width = input$picwidth, height = input$picheigh)
-      print(element_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = element_plot(),
+        device = input$format,
+        path = NULL,
+        scale = 1,
+        width = input$picwidth,
+        height = input$picheigh,
+        units = "in",
+        dpi = 400,
+        limitsize = TRUE
+      )
     }
   )
-  
 }

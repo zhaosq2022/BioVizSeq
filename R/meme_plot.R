@@ -7,6 +7,9 @@
 #' @author Shiqi Zhao
 #' @return list
 #' @examples
+#' meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq") 
+#' meme_file <- readLines(meme_path)
+#' motif_loc <- meme_to_loc(meme_file)
 #' 
 #' mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq") 
 #' mast_file <- readLines(mast_path)
@@ -94,6 +97,7 @@ meme_to_loc <- function(motif_file){
     }
     colnames(table_loc)[4] <- "end"
     table_loc[,2] <- as.numeric(table_loc[,2])
+    colnames(table_loc)[2] <- "Motif"
     data_list <- list(gene_length = gene_length, table_loc = table_loc)
     return(data_list)
   }
@@ -180,6 +184,7 @@ meme_to_loc <- function(motif_file){
     table_motif_loc <- merge(ID_convert, table_loc[, c("ID", "motif", "start", "end")], by = "ID", all.x = TRUE)
     table_motif_loc <- table_motif_loc[,-1]
     colnames(table_motif_loc)[1] <- "ID"
+    colnames(table_motif_loc)[2] <- "Motif"
     data_list <- list(gene_length = gene_length, table_loc = table_motif_loc)
     return(data_list)
   }
@@ -208,13 +213,16 @@ meme_to_loc <- function(motif_file){
 #' @author Shiqi Zhao
 #' @return p
 #' @examples
+#' meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
+#' meme_plot(meme_path)
+#' 
 #' mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 #' meme_plot(mast_path)
 #' 
-#' meme_plot(mast_path, motif_select="1", show_motif_id = TRUE)
+#' meme_plot(meme_path, motif_select="1", show_motif_id = TRUE)
 #' 
 #' order_path <- system.file("extdata", "order.csv", package = "BioVizSeq")
-#' meme_plot(mast_path, the_order=order_path, motif_select="1")
+#' meme_plot(meme_path, the_order=order_path, motif_select="1")
 
 meme_plot <- function(meme_file, the_order = NULL, motif_select = NULL, 
                       shape = "RoundRect", show_motif_id = FALSE, r = 0.3, 
@@ -256,6 +264,10 @@ meme_plot <- function(meme_file, the_order = NULL, motif_select = NULL,
 #' @author Shiqi Zhao
 #' @return data.frame
 #' @examples
+#' meme_path <- system.file("extdata", "meme.xml", package = "BioVizSeq")
+#' meme_file <- readLines(meme_path)
+#' motifseq<- meme_seq(meme_file)
+#' 
 #' mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 #' mast_file <- readLines(mast_path)
 #' motifseq<- meme_seq(mast_file)

@@ -181,7 +181,7 @@ plantcare_classify <- function(plantcare_file){
 plantcare_to_loc <- function(plantcare_data){
   element_loc <- plantcare_data[,c(1,9,4,5)]
   element_loc[,4] <- element_loc[,3] + element_loc[,4]-1
-  colnames(element_loc) <- c("ID", "element", "start", "end")
+  colnames(element_loc) <- c("ID", "Element", "start", "end")
   return(element_loc)
 }
 

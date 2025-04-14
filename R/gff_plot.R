@@ -117,7 +117,7 @@ gff_to_loc <- function(gff_data, mRNA_ID = NULL){
     }
   }
   table_loc[,2] <- gsub("exon", "UTR", table_loc[,2], ignore.case = TRUE)
-  colnames(table_loc) <- c("ID", "element", "start", "end")
+  colnames(table_loc) <- c("ID", "Element", "start", "end")
   
   data_list <- list(gene_length = mRNA_length, table_loc = table_loc)
   return(data_list)
