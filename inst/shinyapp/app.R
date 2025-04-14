@@ -49,7 +49,7 @@ ui <- fluidPage(
     
     tabPanel("Advance Plot1", mod_advplot_ui("advplot"), icon = icon("hands-asl-interpreting")),
     
-    tabPanel("Advance plot2", mod_advplot2_ui("advplot2"), icon = icon("hands-asl-interpreting")),
+    tabPanel("Advance Plot2", mod_advplot2_ui("advplot2"), icon = icon("hands-asl-interpreting")),
     
     tabPanel("About", aboutpage, icon = icon("info-circle")),
     
