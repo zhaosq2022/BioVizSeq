@@ -39,6 +39,7 @@ p
 Visualization of motif in meme file or mast file
 }
 \examples{
+
 mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 meme_plot(mast_path)
 

@@ -1,7 +1,7 @@
 Package: BioVizSeq
 Type: Package
 Title: Visualizing the Elements Within Bio-Sequences
-Version: 1.0.3
+Version: 1.0.4
 Authors@R: 
     person("Shiqi", "Zhao", , "zhaosq89@163.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-2360-956X"))

@@ -16,6 +16,7 @@ data.frame
 Get motif sequence from meme file or mast file
 }
 \examples{
+
 mast_path <- system.file("extdata", "mast.xml", package = "BioVizSeq")
 mast_file <- readLines(mast_path)
 motifseq<- meme_seq(mast_file)

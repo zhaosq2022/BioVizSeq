@@ -47,9 +47,13 @@ ui <- fluidPage(
     
     tabPanel("Basic Plot", mod_plot_ui("plot"), icon = icon("bars-staggered")),
     
-    tabPanel("Advance Plot1", mod_advplot_ui("advplot"), icon = icon("hands-asl-interpreting")),
+    tabPanel("Advance Plot", mod_advplot_ui("advplot"), icon = icon("image")),
     
-    tabPanel("Advance Plot2", mod_advplot2_ui("advplot2"), icon = icon("hands-asl-interpreting")),
+    navbarMenu(
+      title = "Other Plots",  icon = icon("file-lines"),
+      tabPanel("Advance Plantcare", mod_advplot2_ui("advplot2"), icon = icon("hands-asl-interpreting"))
+    ),
+    
     
     tabPanel("About", aboutpage, icon = icon("info-circle")),
     
