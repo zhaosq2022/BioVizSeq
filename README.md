@@ -192,7 +192,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 domain_loc <- smart_to_loc(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID39171115118211801744387881ZDjUBxRVzJ. Waiting for results.
+#> Job entered the queue with ID12315310532459281744966748fjuQJesKfo. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 
@@ -209,7 +209,7 @@ fa_path <- system.file("extdata", "target.fa", package = "BioVizSeq")
 smart_plot(fa_path)
 #> Submitting sequence AtAP2_002...
 #> Submitting sequence AtAP2_003...
-#> Job entered the queue with ID39171115118238181744387910nzudunHPXm. Waiting for results.
+#> Job entered the queue with ID12315310532468761744966784YObRQLBBcV. Waiting for results.
 #> Submitting sequence AtAP2_004...
 #> Submitting sequence AtAP2_005...
 ```
@@ -282,3 +282,41 @@ plot_file$p_tree + plot_file$p_plantcare1 + plot_file$p_plantcare2 + plot_layout
 ```
 
 <img src="man/figures/README-adv_plantcare-1.png" width="60%" height="60%" />
+
+### 4.8 Gene and Protein calc
+
+``` r
+gff_path <- system.file("extdata", "idpro.gff3", package = "BioVizSeq")
+gff_data <- read.table(gff_path, header = FALSE, sep = '\t')
+gene_statistics_data <- gff_statistics(gff_data)
+head(gene_statistics_data)
+#>       ID                Location Chain gene_length CDS_length protein_length
+#> 1 gene01 Chr15:31085288-31086321     -        1034        531            176
+#> 2 gene02   Contig862:15967-16631     -         665        555            184
+#> 3 gene03 Chr15:31004816-31005518     +         703        564            187
+#> 4 gene04 Chr15:30780257-30780955     +         699        564            187
+#> 5 gene05 Chr15:30976079-30976776     +         698        564            187
+#> 6 gene06  Chr2:12719447-12720989     +        1543       1224            407
+#>   exon_number intron_number CDS_number UTR_number
+#> 1           2             1          2          2
+#> 2           2             1          2          0
+#> 3           2             1          2          0
+#> 4           2             1          2          0
+#> 5           2             1          2          0
+#> 6           1             0          1          2
+
+pep_path <- system.file("extdata", "idpep2.fa", package = "BioVizSeq")
+pep_calc_result <- ProtParam_calc(pep_path)
+#> Submitting sequence gene01...
+#> Submitting sequence gene02...
+#> Submitting sequence gene03...
+head(pep_calc_result)
+#>       ID Number of amino acids Molecular weight Theoretical pI
+#> 1 gene01                   176         19433.92           6.22
+#> 2 gene02                   184         20288.83           9.07
+#> 3 gene03                   187         21042.90           7.68
+#>   The instability index Aliphatic index Grand average of hydropathicity
+#> 1                 80.30           67.16                          -0.611
+#> 2                 68.69           73.15                          -0.580
+#> 3                 72.86           69.41                          -0.637
+```

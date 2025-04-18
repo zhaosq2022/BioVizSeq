@@ -40,6 +40,9 @@
     <loc>/reference/gff_plot.html</loc>
   </url>
   <url>
+    <loc>/reference/gff_statistics.html</loc>
+  </url>
+  <url>
     <loc>/reference/gff_to_loc.html</loc>
   </url>
   <url>
@@ -89,6 +92,9 @@
   </url>
   <url>
     <loc>/reference/plantcare_to_loc.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ProtParam_calc.html</loc>
   </url>
   <url>
     <loc>/reference/smart_plot.html</loc>

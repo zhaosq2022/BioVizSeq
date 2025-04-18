@@ -21,7 +21,9 @@ mod_smartplot_ui <- function(id){
       numericInput(ns("picheigh"),label = "Graph heigh value",value = 9.5),
       numericInput(ns("picwidth"),label = "Graph width value",value = 9.5),
       downloadButton(ns("downloadpic"),label = "Download Picture!"),
-      
+      radioButtons(ns("format"), "Figure type:", 
+                   choices = c("PNG" = "png", "PDF" = "pdf"), 
+                   selected = "png")
     ),
     
     mainPanel(
@@ -90,11 +92,19 @@ mod_smartplot_server <- function(input, output, session){
     filename = function() { 
       paste0("Smart_plot", '.pdf')
     },
-    contentType = "image/pdf",
     content = function(file) {
-      pdf(file, width = input$picwidth, height = input$picheigh)
-      print(element_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = element_plot(),
+        device = input$format,
+        path = NULL,
+        scale = 1,
+        width = input$picwidth,
+        height = input$picheigh,
+        units = "in",
+        dpi = 400,
+        limitsize = TRUE
+      )
     }
   )
   

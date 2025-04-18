@@ -4,7 +4,7 @@ mod_plot_ui <- function(id){
     sidebarPanel(
       width = 4,
       h3(strong("The main options:")),
-      fileInput(ns("filename"),"Choose Loci File to Upload(.csv/.txt/.xlsx/.xls):", accept = NULL),
+      fileInput(ns("filename"),"Choose Loci File to Upload(.csv/.txt/.xlsx/.xls):", accept = NULL, placeholder = "GeneID\tDomainName\tStartPos\tEndPos"),
       radioButtons(ns("uploadSource"), "Choose Length Information to Upload:",
                    choices = c("Length File(.csv/.txt/.xlsx/.xls)" = "local", "Length Number of Sequence" = "lengthnum"),
                    selected = "local"),
@@ -26,7 +26,9 @@ mod_plot_ui <- function(id){
       numericInput(ns("picheigh"),label = "Graph heigh value",value = 9.5),
       numericInput(ns("picwidth"),label = "Graph width value",value = 9.5),
       downloadButton(ns("downloadpic"),label = "Download Picture!"),
-      
+      radioButtons(ns("format"), "Figure type:", 
+                   choices = c("PNG" = "png", "PDF" = "pdf"), 
+                   selected = "png")
     ),
     
     mainPanel(
@@ -125,11 +127,19 @@ mod_plot_server <- function(input, output, session){
     filename = function() { 
       paste0("BioVizSeq_plot", '.pdf')
     },
-    contentType = "image/pdf",
     content = function(file) {
-      pdf(file, width = input$picwidth, height = input$picheigh)
-      print(element_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = element_plot(),
+        device = input$format,
+        path = NULL,
+        scale = 1,
+        width = input$picwidth,
+        height = input$picheigh,
+        units = "in",
+        dpi = 400,
+        limitsize = TRUE
+      )
     }
   )
   

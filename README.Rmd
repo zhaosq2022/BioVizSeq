@@ -229,3 +229,16 @@ plot_file <- combi_p(tree_path = tree_path, plantcare_path = plantcare_path, pro
 
 plot_file$p_tree + plot_file$p_plantcare1 + plot_file$p_plantcare2 + plot_layout(ncol = 3, guides = 'collect', widths = c(1, 3, 1)) + plot_annotation( tag_levels = 'A' )
 ```
+
+### 4.8 Gene and Protein calc
+
+```{r}
+gff_path <- system.file("extdata", "idpro.gff3", package = "BioVizSeq")
+gff_data <- read.table(gff_path, header = FALSE, sep = '\t')
+gene_statistics_data <- gff_statistics(gff_data)
+head(gene_statistics_data)
+
+pep_path <- system.file("extdata", "idpep2.fa", package = "BioVizSeq")
+pep_calc_result <- ProtParam_calc(pep_path)
+head(pep_calc_result)
+```

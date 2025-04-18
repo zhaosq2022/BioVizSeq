@@ -240,7 +240,7 @@
 <span><span class="va">domain_loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/smart_to_loc.html">smart_to_loc</a></span><span class="op">(</span><span class="va">fa_path</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_002...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_003...</span></span>
-<span><span class="co">#&gt; Job entered the queue with ID39171115118211801744387881ZDjUBxRVzJ. Waiting for results.</span></span>
+<span><span class="co">#&gt; Job entered the queue with ID12315310532459281744966748fjuQJesKfo. Waiting for results.</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_004...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_005...</span></span>
 <span></span>
@@ -256,7 +256,7 @@
 <span><span class="fu"><a href="reference/smart_plot.html">smart_plot</a></span><span class="op">(</span><span class="va">fa_path</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_002...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_003...</span></span>
-<span><span class="co">#&gt; Job entered the queue with ID39171115118238181744387910nzudunHPXm. Waiting for results.</span></span>
+<span><span class="co">#&gt; Job entered the queue with ID12315310532468761744966784YObRQLBBcV. Waiting for results.</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_004...</span></span>
 <span><span class="co">#&gt; Submitting sequence AtAP2_005...</span></span></code></pre></div>
 <p><img src="reference/figures/README-smart_one-1.png" width="60%" height="60%"></p>
@@ -322,6 +322,44 @@
 <span></span>
 <span><span class="va">plot_file</span><span class="op">$</span><span class="va">p_tree</span> <span class="op">+</span> <span class="va">plot_file</span><span class="op">$</span><span class="va">p_plantcare1</span> <span class="op">+</span> <span class="va">plot_file</span><span class="op">$</span><span class="va">p_plantcare2</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html" class="external-link">plot_layout</a></span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">3</span>, guides <span class="op">=</span> <span class="st">'collect'</span>, widths <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html" class="external-link">plot_annotation</a></span><span class="op">(</span> tag_levels <span class="op">=</span> <span class="st">'A'</span> <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-adv_plantcare-1.png" width="60%" height="60%"></p>
+</div>
+<div class="section level3">
+<h3 id="id_48-gene-and-protein-calc">4.8 Gene and Protein calc<a class="anchor" aria-label="anchor" href="#id_48-gene-and-protein-calc"></a>
+</h3>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gff_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"idpro.gff3"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
+<span><span class="va">gff_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></span><span class="op">(</span><span class="va">gff_path</span>, header <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span> <span class="st">'\t'</span><span class="op">)</span></span>
+<span><span class="va">gene_statistics_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gff_statistics.html">gff_statistics</a></span><span class="op">(</span><span class="va">gff_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_statistics_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       ID                Location Chain gene_length CDS_length protein_length</span></span>
+<span><span class="co">#&gt; 1 gene01 Chr15:31085288-31086321     -        1034        531            176</span></span>
+<span><span class="co">#&gt; 2 gene02   Contig862:15967-16631     -         665        555            184</span></span>
+<span><span class="co">#&gt; 3 gene03 Chr15:31004816-31005518     +         703        564            187</span></span>
+<span><span class="co">#&gt; 4 gene04 Chr15:30780257-30780955     +         699        564            187</span></span>
+<span><span class="co">#&gt; 5 gene05 Chr15:30976079-30976776     +         698        564            187</span></span>
+<span><span class="co">#&gt; 6 gene06  Chr2:12719447-12720989     +        1543       1224            407</span></span>
+<span><span class="co">#&gt;   exon_number intron_number CDS_number UTR_number</span></span>
+<span><span class="co">#&gt; 1           2             1          2          2</span></span>
+<span><span class="co">#&gt; 2           2             1          2          0</span></span>
+<span><span class="co">#&gt; 3           2             1          2          0</span></span>
+<span><span class="co">#&gt; 4           2             1          2          0</span></span>
+<span><span class="co">#&gt; 5           2             1          2          0</span></span>
+<span><span class="co">#&gt; 6           1             0          1          2</span></span>
+<span></span>
+<span><span class="va">pep_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"idpep2.fa"</span>, package <span class="op">=</span> <span class="st">"BioVizSeq"</span><span class="op">)</span></span>
+<span><span class="va">pep_calc_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ProtParam_calc.html">ProtParam_calc</a></span><span class="op">(</span><span class="va">pep_path</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Submitting sequence gene01...</span></span>
+<span><span class="co">#&gt; Submitting sequence gene02...</span></span>
+<span><span class="co">#&gt; Submitting sequence gene03...</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">pep_calc_result</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       ID Number of amino acids Molecular weight Theoretical pI</span></span>
+<span><span class="co">#&gt; 1 gene01                   176         19433.92           6.22</span></span>
+<span><span class="co">#&gt; 2 gene02                   184         20288.83           9.07</span></span>
+<span><span class="co">#&gt; 3 gene03                   187         21042.90           7.68</span></span>
+<span><span class="co">#&gt;   The instability index Aliphatic index Grand average of hydropathicity</span></span>
+<span><span class="co">#&gt; 1                 80.30           67.16                          -0.611</span></span>
+<span><span class="co">#&gt; 2                 68.69           73.15                          -0.580</span></span>
+<span><span class="co">#&gt; 3                 72.86           69.41                          -0.637</span></span></code></pre></div>
 </div>
 </div>
 </div>

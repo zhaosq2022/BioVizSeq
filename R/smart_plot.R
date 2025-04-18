@@ -92,6 +92,7 @@ smart_to_loc <- function(input_file, do_pfam = TRUE){
     #unlink(file_dir, recursive = TRUE)
   }
   
+  #smart_txt:the path of smart file
   smart_file_convert <- function(smart_txt){
     ID <- gsub(".*\\/(.*)_SMART_results\\.txt", "\\1", smart_txt)
     lines <- readLines(smart_txt)

@@ -1,6 +1,7 @@
-## Version 1.0.4 (2025-04-16)
+## Version 1.0.4 (2025-04-18)
 
  - Added the function `combi_p2` to facilitate free combination in patchwork by the order file.
+ - Added the function `gff_statistics()` and `ProtParam_calc` to gather information about genes (such as introns, exons, CDS, etc.) and protein physicochemical properties.
  - Improve the shinyapp.
 
 ## Version 1.0.3 (2025-04-11)
