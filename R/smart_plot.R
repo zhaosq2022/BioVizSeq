@@ -103,10 +103,15 @@ smart_to_loc <- function(input_file, do_pfam = TRUE){
     cleaned_text <- sub("\n", "", cleaned_text)
     text_connection <- textConnection(cleaned_text)
     cleaned_text <- read.table(text_connection, sep='\t')
-    filtered_text <- filter(cleaned_text, .data$V1 != "low_complexity_region" & .data$V6 == "visible|OK")
-    filtered_text2 <- data.frame(ID=ID, Domain =filtered_text[,1], start=filtered_text[,2], end=filtered_text[,3])
-    filtered_text2[,1] <- sub(".*:", "", filtered_text2[,1])
-    return(filtered_text2)
+    filtered_text <- dplyr::filter(cleaned_text, .data$V1 != "low_complexity_region" & .data$V6 == "visible|OK")
+    if(!is.na(filtered_text[1,1])){
+      filtered_text2 <- data.frame(ID=ID, Domain =filtered_text[,1], start=filtered_text[,2], end=filtered_text[,3])
+      filtered_text2[,1] <- sub(".*:", "", filtered_text2[,1])
+      return(filtered_text2)
+    }else{
+      return()
+    }
+    
   }
   
   submit_to_smart(input_file, do_pfam = do_pfam)
