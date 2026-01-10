@@ -15,7 +15,7 @@ ui <- fluidPage(
   ),
   navbarPage(
     title = "",
-    windowTitle = "BioVizSeq",
+    windowTitle = "KoMPDB",
     theme = shinytheme("flatly"),
     tabPanel("Home", homepage, icon = icon("home")),
     

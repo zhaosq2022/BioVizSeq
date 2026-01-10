@@ -21,9 +21,9 @@ smart_to_loc <- function(input_file, do_pfam = TRUE){
 
   submit_to_smart <- function(input_file, do_pfam = FALSE, do_signalp = FALSE, 
                               do_rep = FALSE, do_disembl = FALSE, do_schnipsel = FALSE) {
-
-    submit_url <- "http://smart.embl.de/smart/show_motifs.pl"
-    job_status_url <- "http://smart.embl.de/smart/job_status.pl"
+    
+    submit_url <- "https://smart.embl.de/smart/show_motifs.pl"
+    job_status_url <- "https://smart.embl.de/results.cgi"
     
     if (!file.exists(input_file)) {
       stop("Input file does not exist.")
@@ -59,7 +59,7 @@ smart_to_loc <- function(input_file, do_pfam = TRUE){
           writeLines(res_content, output_file)
           #cat("Results saved to", output_file, "\n")
         } else {
-          job_id <- sub(".* <a href='job_status\\.pl\\?jobid=(\\d+.+?)'>click here</a>.*", "\\1", res_content)
+          job_id <- sub(".* jobId='(\\d+.+?)';.*", "\\1", res_content)
           if (nchar(job_id) == 0) {
             error_file <- file.path(output_directory, paste0(seq_id, "_SMART_error.html"))
             writeLines(res_content, error_file)
@@ -69,7 +69,7 @@ smart_to_loc <- function(input_file, do_pfam = TRUE){
             message("Job entered the queue with ID", job_id, ". Waiting for results.\n")
             repeat {
               Sys.sleep(5)
-              job_status_response <- GET(paste0(job_status_url, "?jobid=", job_id))
+              job_status_response <- GET(paste0(job_status_url, "?id=", job_id))
               if (http_status(job_status_response)$category == "Success") {
                 job_status_content <- content(job_status_response, "text", encoding = "UTF-8")
                 if (grepl("-- SMART RESULT", job_status_content)) {
