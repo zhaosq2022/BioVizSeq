@@ -1,7 +1,11 @@
+## Version 1.0.6 (2026-01-30)
+
+ - Fix the issue of image download in shinyapp.
+
 ## Version 1.0.5 (2026-01-10)
 
  - Solve the errors caused by the update of the SMART website.
- 
+
 ## Version 1.0.4 (2025-04-18)
 
  - Added the function `combi_p2` to facilitate free combination in patchwork by the order file.

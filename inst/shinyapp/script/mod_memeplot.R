@@ -86,7 +86,7 @@ mod_memeplot_server <- function(input, output, session){
   
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Motif_plot", '.pdf')
+      paste0("Motif_plot.", input$format)
     },
     content = function(file) {
       ggsave(

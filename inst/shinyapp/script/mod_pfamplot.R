@@ -78,7 +78,7 @@ mod_pfamplot_server <- function(input, output, session){
   
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Pfam_plot", '.pdf')
+      paste0("Pfam_plot.", input$format)
     },
     content = function(file) {
       ggsave(

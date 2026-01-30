@@ -70,7 +70,7 @@ mod_plantcareplot_server <- function(input, output, session){
   
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Plantcare_plot1", '.pdf')
+      paste0("Plantcare_plot1.", input$format)
     },
     content = function(file) {
       ggsave(

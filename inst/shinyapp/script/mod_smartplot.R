@@ -90,7 +90,7 @@ mod_smartplot_server <- function(input, output, session){
   
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Smart_plot", '.pdf')
+      paste0("Smart_plot.", input$format)
     },
     content = function(file) {
       ggsave(

@@ -137,7 +137,7 @@ mod_advplot2_server <- function(input, output, session){
   
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Advanced_plantcare", '.pdf')
+      paste0("Advanced_plantcare.", input$format)
     },
     content = function(file) {
       ggsave(

@@ -59,7 +59,7 @@ mod_gffplot_server <- function(input, output, session){
   
   output$downloadpic <- downloadHandler(
     filename = function() { 
-      paste0("Gene_structure_plot", '.pdf')
+      paste0("Gene_structure_plot.", input$format)
     },
     content = function(file) {
       ggsave(
