@@ -72,6 +72,7 @@ motif_plot <- function(motif_loc, gene_length, the_order = NULL,
     
     colnames(motif_loc)[5]  <- "seq_order"
     
+
     if(is.null(motif_select)){
       motif_loc <- motif_loc
       gene_length <- gene_length

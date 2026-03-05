@@ -151,6 +151,8 @@ smart_plot <- function(fasta_file, the_order = NULL, domain_select = NULL,
   smart_domain_loc <- smart_to_loc(fasta_file)
   if (is.null(the_order)) {
     the_order=NULL
+  }else{
+    the_order <- readLines(the_order)
   }
   
   if (is.null(domain_select)) {

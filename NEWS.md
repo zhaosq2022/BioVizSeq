@@ -1,3 +1,7 @@
+## Version 1.0.7 (2026-03-05)
+
+ - Fix the issue of SMART.
+
 ## Version 1.0.6 (2026-01-30)
 
  - Fix the issue of image download in shinyapp.
