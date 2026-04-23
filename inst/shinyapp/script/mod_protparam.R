@@ -9,7 +9,7 @@ mod_protparam_ui <- function(id){
       br(),
       br(),
       h3(strong("Download options:")),
-      downloadButton(ns("downloadfile"),label = "Download feature loci file")
+      downloadButton(ns("downloadlocifile"),label = "Download feature loci file")
       
     ),
     

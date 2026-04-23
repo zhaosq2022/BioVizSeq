@@ -1,3 +1,7 @@
+## Version 1.0.8 (2026-04-23)
+
+ - Fix the issue of Gene information.
+
 ## Version 1.0.7 (2026-03-05)
 
  - Fix the issue of SMART.

@@ -40,7 +40,7 @@ mod_info_server <- function(input, output, session){
     gene_info()
   })
   
-  output$downloadlocifile <- downloadHandler(
+  output$downloadinfofile <- downloadHandler(
     filename = "gene_info.txt",
     content = function(file) {
       write.table(gene_info(), file, sep = "\t", row.names = FALSE, col.names = T, quote = FALSE)
